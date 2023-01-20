@@ -1,55 +1,77 @@
-import { motion, useCycle } from 'framer-motion';
-import { useLayoutEffect, useRef, useState } from 'react';
-import MenuToggleIcon from '../MenuToggleIcon/MenuToggleIcon';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import './Navigation.style.scss';
+import PokeBallIcon from '../utils/SVG/PokeBallIcon';
 
-export interface NavigationProps {
-    children?: React.ReactNode;
+interface NavigationItemProps {
+    name: string;
+    link: string;
+};
+
+const MenuItemVariants = {
+    open: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            y: { stiffness: 1000, velocity: -100 }
+        }
+    },
+    closed: {
+        y: 50,
+        opacity: 0,
+        transition: {
+            y: { stiffness: 1000 }
+        }
+    }
+};
+
+const NavigationVariants = {
+    open: {
+        transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+    },
+    closed: {
+        transition: { staggerChildren: 0.05, staggerDirection: -1 }
+    }
+};
+
+const items: NavigationItemProps[] = [
+    {
+        name: 'Home',
+        link: '/'
+    },
+    {
+        name: 'Pokemons',
+        link: '/pokemons'
+    },
+];
+
+const NavigationItem: React.FC<NavigationItemProps> = ({ name, link }) => {
+    return (
+        <motion.li
+            variants={MenuItemVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className='navigation-item'
+        >
+            <Link to={link}>
+                <div className='icon'>
+                    <PokeBallIcon/>
+                </div>
+                <div>
+                    {name}
+                </div>
+            </Link>
+        </motion.li>
+    )
 }
 
-const Navigation: React.FC<NavigationProps> = ({children}) => {
-    const [isOpen, toggleOpen] = useCycle<boolean>(false, true);
-    const containerRef = useRef<HTMLElement>(null);
-    const [height, setHeight] = useState<number>(0);
-
-    const sidebar = {
-        open: (height = 1000) => ({
-            clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-            transition: {
-                type: "spring",
-                stiffness: 20,
-                restDelta: 2
-            }
-        }),
-        closed: {
-            clipPath: "circle(30px at 40px 40px)",
-            transition: {
-                delay: 0.5,
-                type: "spring",
-                stiffness: 400,
-                damping: 40
-            }
-        }
-    };
-
-    useLayoutEffect(() => {
-        if (containerRef && containerRef.current) {
-            setHeight(containerRef.current.offsetHeight)
-        }
-    }, [])
-
+const Navigation = () => {
     return (
-        <motion.nav
-            initial={false}
-            animate={isOpen ? "open" : "closed"}
-            custom={height}
-            ref={containerRef}
-        >
-            <motion.div>
-                {children}
-            </motion.div>
-
-            <MenuToggleIcon toggle={toggleOpen}/>
-        </motion.nav>
+        <motion.ul variants={NavigationVariants} className='navigation'>
+            {items.map((item, index) => (
+                <NavigationItem name={item.name} key={index} link={item.link} />
+            ))}
+        </motion.ul>
     );
 };
 

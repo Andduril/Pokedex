@@ -1,0 +1,26 @@
+#PokemonSprite {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .button {
+        all: unset;
+        width: 50px;
+    }
+
+    .left {
+        transform: rotate(-180deg);
+    }
+
+    .sprite-container {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #EEE;
+        display: flex;
+        flex-direction: column; // in case we add the name of the sprite later
+        justify-content: center;
+        align-items: center;
+    }
+}

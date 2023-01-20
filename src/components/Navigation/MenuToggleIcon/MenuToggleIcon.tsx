@@ -1,5 +1,5 @@
 import Path from "../Path/Path";
-import './style.scss';
+import './MenuToggleIcon.style.scss';
 
 export interface MenuToggleIconProps {
     toggle: () => void;

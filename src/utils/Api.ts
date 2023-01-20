@@ -22,3 +22,5 @@ export interface NamedAPIResourceList<T> {
     previous: APIResourceURL<NamedAPIResourceList<T>> | null;
     results: NamedAPIResource<T>[];
 }
+
+export const api = 'https://pokeapi.co/api/v2/';
