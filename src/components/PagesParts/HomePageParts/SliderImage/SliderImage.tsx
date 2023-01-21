@@ -18,7 +18,7 @@ const SliderImage: React.FC<SliderImageProps> = ({pokemonId}) => {
                     <img src={data.sprites.front_default} alt={'pokemon'}/>
                 </Link>
             ) : (
-                <div>
+                <div style={{width: '96px', height: '96px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <span>Loading...</span>
                 </div>
             )}

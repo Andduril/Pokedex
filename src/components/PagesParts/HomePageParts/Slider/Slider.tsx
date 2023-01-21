@@ -4,9 +4,21 @@ import './Slider.style.scss';
 
 export interface SliderProps {
     nbItem: number;
+};
+
+const nbMax = 905;
+
+const getRandomId = (): number => {
+    return Math.floor(Math.random() * (nbMax - 1) + 1);
 }
 
 const Slider: React.FC<SliderProps> = ({ nbItem }) => {
+
+    const pokemonsIds: number[] = [];
+    for(let i = 0; i < nbItem; i++) {
+        pokemonsIds.push(getRandomId());
+    }
+
     return (
         <div className="slider">
             <motion.ul
@@ -21,11 +33,17 @@ const Slider: React.FC<SliderProps> = ({ nbItem }) => {
                     ease: 'linear'
                 }}
             >
-                {[...Array(nbItem)].map((value, index) => (
+                {/* {[...Array(nbItem)].map((value, index) => (
                     <SliderImage pokemonId={index + 1} key={index} />
                 ))}
                 {[...Array(nbItem)].map((value, index) => (
                     <SliderImage pokemonId={index + 1} key={index} />
+                ))} */}
+                {pokemonsIds.map((id, index) => (
+                    <SliderImage pokemonId={id} key={index}/>
+                ))}
+                {pokemonsIds.map((id, index) => (
+                    <SliderImage pokemonId={id} key={index}/>
                 ))}
             </motion.ul>
         </div>
