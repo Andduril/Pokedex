@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export interface APIResourceURL<T> extends String {};
 
 export interface APIResource<T> {
