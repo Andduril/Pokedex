@@ -1,8 +1,12 @@
+import PokemonArray from "../../components/PagesParts/PokemonsPageParts/PokemonArray/PokemonArray";
+
 const PokemonsPage = () => {
+    
+
     return (
-        <div>
-            
-        </div>        
+        <>
+            <PokemonArray itemPerPage={20}/>
+        </>
     );
 };
 

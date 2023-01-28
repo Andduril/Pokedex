@@ -4,7 +4,7 @@ import useFetch from '../../../../hooks/useFetch';
 import { APIResourceURL } from '../../../../utils/Api';
 import { Move } from '../../../../utils/Pokemon';
 import { motion } from 'framer-motion';
-import PokemonTypeIcon from '../PokemonTypeIcon/PokemonTypeIcon';
+import PokemonTypeIcon from '../../../utils/PokemonTypeIcon/PokemonTypeIcon';
 import './MoveItem.style.scss';
 
 export interface MoveItemProps {

@@ -1,0 +1,32 @@
+.Pagination {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .pagination-button {
+        all: unset;
+        width: 40px;
+    }
+
+    .previous {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+
+    .pagination-current-page {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #2a6cf0;
+        border-radius: 50%;
+
+        span {
+            color: white;
+            font-weight: bold;
+        }
+    }
+}
