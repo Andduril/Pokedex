@@ -78,6 +78,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
     "prop-types": "^15.8.1",
+    "react-test-renderer": "^18.2.0",
     "storybook": "^6.5.15",
     "webpack": "^5.75.0"
   }
