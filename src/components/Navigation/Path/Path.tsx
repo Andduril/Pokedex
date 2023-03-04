@@ -1,7 +1,7 @@
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion'
 
-const Path = ({...props}) => {
-    return (
+const Path = ({ ...props }) => {
+  return (
         <motion.path
             fill="transparent"
             strokeWidth="3"
@@ -9,7 +9,7 @@ const Path = ({...props}) => {
             strokeLinecap="round"
             {...props}
         />
-    )
-};
+  )
+}
 
-export default Path;
+export default Path

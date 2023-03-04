@@ -1,24 +1,25 @@
-import { useParams } from "react-router-dom"
-import useFetch from "../../hooks/useFetch";
-import { Pokemon } from "../../utils/Pokemon";
-import { api } from "../../utils/Api";
-import './PokemonPage.style.scss';
-import { AnimatePresence, motion } from "framer-motion";
-import PokemonSprite from "../../components/PagesParts/PokemonPageParts/PokemonSprite/PokemonSprite";
-import PokemonMoves from "../../components/PagesParts/PokemonPageParts/PokemonMoves/PokemonMoves";
-import PokemonStats from "../../components/PagesParts/PokemonPageParts/PokemonStats/PokemonStats";
-import PokemonTypes from "../../components/PagesParts/PokemonPageParts/PokemonTypes/PokemonTypes";
-import Tabs from "../../components/utils/Tabs/Tabs";
-import TabElement from "../../components/utils/Tabs/TabElement/TabElement";
+import { useParams } from 'react-router-dom'
+import useFetch from '../../hooks/useFetch'
+import { type Pokemon } from '../../utils/Pokemon'
+import { api } from '../../utils/Api'
+import './PokemonPage.style.scss'
+import { AnimatePresence, motion } from 'framer-motion'
+import PokemonSprite from '../../components/PagesParts/PokemonPageParts/PokemonSprite/PokemonSprite'
+import PokemonMoves from '../../components/PagesParts/PokemonPageParts/PokemonMoves/PokemonMoves'
+import PokemonStats from '../../components/PagesParts/PokemonPageParts/PokemonStats/PokemonStats'
+import PokemonTypes from '../../components/PagesParts/PokemonPageParts/PokemonTypes/PokemonTypes'
+import Tabs from '../../components/utils/Tabs/Tabs'
+import TabElement from '../../components/utils/Tabs/TabElement/TabElement'
 
 const PokemonPage = () => {
-    const { pokemonId } = useParams();
-    // eslint-disable-next-line
+  const { pokemonId } = useParams()
+  // eslint-disable-next-line
     const { data, error } = useFetch<Pokemon>(api + `pokemon/${pokemonId}`);
 
-    return (
+  return (
         <div className="pokemonPage">
-            {data ? (
+            {(data != null)
+              ? (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <PokemonSprite sprites={data.sprites} />
                     <div style={{ display: 'flex', justifyContent: 'space-around', fontWeight: 'bold' }}>
@@ -39,7 +40,7 @@ const PokemonPage = () => {
                         <TabElement name="stats">
                             <AnimatePresence mode="wait">
                                 <motion.div className="stats-tab"
-                                    key={"stats-tab"}
+                                    key={'stats-tab'}
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
@@ -51,7 +52,7 @@ const PokemonPage = () => {
                         <TabElement name="moves">
                             <AnimatePresence mode="wait">
                                 <motion.div className="moves-tab"
-                                    key={"moves-tab"}
+                                    key={'moves-tab'}
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
@@ -62,13 +63,14 @@ const PokemonPage = () => {
                         </TabElement>
                     </Tabs>
                 </div>
-            ) : (
+                )
+              : (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <span>Loading...</span>
                 </div>
-            )}
+                )}
         </div>
-    );
-};
+  )
+}
 
-export default PokemonPage;
+export default PokemonPage

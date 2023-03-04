@@ -1,9 +1,9 @@
 const LoadingPage = () => {
-    return (
+  return (
         <>
             <h1>Loading...</h1>
         </>
-    );
-};
+  )
+}
 
-export default LoadingPage;
+export default LoadingPage

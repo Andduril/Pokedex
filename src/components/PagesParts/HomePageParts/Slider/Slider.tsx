@@ -1,36 +1,35 @@
-import SliderImage from "../SliderImage/SliderImage";
-import { motion } from "framer-motion";
-import './Slider.style.scss';
+import SliderImage from '../SliderImage/SliderImage'
+import { motion } from 'framer-motion'
+import './Slider.style.scss'
 
 export interface SliderProps {
-    nbItem: number;
+  nbItem: number
 };
 
-const nbMax = 905;
+const nbMax = 905
 
 const getRandomId = (): number => {
-    return Math.floor(Math.random() * (nbMax - 1) + 1);
+  return Math.floor(Math.random() * (nbMax - 1) + 1)
 }
 
 const Slider: React.FC<SliderProps> = ({ nbItem }) => {
+  const pokemonsIds: number[] = []
+  for (let i = 0; i < nbItem; i++) {
+    pokemonsIds.push(getRandomId())
+  }
 
-    const pokemonsIds: number[] = [];
-    for(let i = 0; i < nbItem; i++) {
-        pokemonsIds.push(getRandomId());
-    }
-
-    return (
+  return (
         <div className="slider">
             <motion.ul
                 className="slider-list"
-                style={{width: (nbItem*2)*96}}
+                style={{ width: (nbItem * 2) * 96 }}
                 animate={{
-                    transform: `translateX(-${nbItem*96}px)`
+                  transform: `translateX(-${nbItem * 96}px)`
                 }}
                 transition={{
-                    repeat: Infinity,
-                    duration: 10,
-                    ease: 'linear'
+                  repeat: Infinity,
+                  duration: 10,
+                  ease: 'linear'
                 }}
             >
                 {/* {[...Array(nbItem)].map((value, index) => (
@@ -47,7 +46,7 @@ const Slider: React.FC<SliderProps> = ({ nbItem }) => {
                 ))}
             </motion.ul>
         </div>
-    )
+  )
 }
 
-export default Slider;
+export default Slider

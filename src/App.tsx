@@ -1,19 +1,18 @@
-import React, { Suspense } from 'react';
-import Navigation from './components/Navigation/Navigation';
-import SideMenu from './components/Navigation/SideMenu/SideMenu';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import './App.scss';
-import Loading from './pages/LoadingPage/LoadinPage';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, { Suspense } from 'react'
+import Navigation from './components/Navigation/Navigation'
+import SideMenu from './components/Navigation/SideMenu/SideMenu'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import './App.scss'
+import Loading from './pages/LoadingPage/LoadinPage'
+import { AnimatePresence, motion } from 'framer-motion'
 
-const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
-const PokemonsPage = React.lazy(() => import('./pages/PokemonsPage/PokemonsPage'));
-const PokemonPage = React.lazy(() => import('./pages/PokemonPage/PokemonPage'));
-const MovePage = React.lazy(() => import('./pages/MovePage/MovePage'));
+const HomePage = React.lazy(async () => await import('./pages/HomePage/HomePage'))
+const PokemonsPage = React.lazy(async () => await import('./pages/PokemonsPage/PokemonsPage'))
+const PokemonPage = React.lazy(async () => await import('./pages/PokemonPage/PokemonPage'))
+const MovePage = React.lazy(async () => await import('./pages/MovePage/MovePage'))
 
 const App = () => {
-
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
@@ -94,7 +93,7 @@ const App = () => {
         <span>Made by <a href="https://github.com/Andduril">Andduril</a></span>
       </footer> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

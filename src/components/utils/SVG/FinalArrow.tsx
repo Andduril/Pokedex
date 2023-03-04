@@ -1,5 +1,5 @@
 const FinalArrow = () => {
-    return (
+  return (
         <svg viewBox="0 0 24 24" version="1.1">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Next">
@@ -15,7 +15,7 @@ const FinalArrow = () => {
                 </g>
             </g>
         </svg>
-    );
-};
+  )
+}
 
-export default FinalArrow;
+export default FinalArrow
