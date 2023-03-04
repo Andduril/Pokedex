@@ -1,38 +1,38 @@
-import { motion } from 'framer-motion';
-import './CircleProgress.style.scss';
+import { motion } from 'framer-motion'
+import './CircleProgress.style.scss'
 
 export interface CircleProgressProps {
-    nbMax: number; // la stat a son maximum
-    nb: number; // la stat du pokemon en question
-    color1: string;
-    color2: string;
-    width: number;
-    height: number;
-    animationDelay?: number;
-    children?: React.ReactNode;
+  nbMax: number // la stat a son maximum
+  nb: number // la stat du pokemon en question
+  color1: string
+  color2: string
+  width: number
+  height: number
+  animationDelay?: number
+  children?: React.ReactNode
 };
 
 const CircleProgress: React.FC<CircleProgressProps> = ({ nbMax, nb, color1, color2, width, height, animationDelay, children }) => {
-    const draw = {
-        hidden: { pathLength: 0, opacity: 0 },
-        visible: () => {
-            let delay: number = 1;
+  const draw = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: () => {
+      let delay: number = 1
 
-            if(animationDelay) delay = 1 + animationDelay * 0.5;
-            
-            return {
-                pathLength: nb / nbMax,
-                opacity: 1,
-                transition: {
-                    pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
-                    opacity: { delay, duration: 0.01 }
-                }
-            };
+      if (animationDelay) delay = 1 + animationDelay * 0.5
+
+      return {
+        pathLength: nb / nbMax,
+        opacity: 1,
+        transition: {
+          pathLength: { delay, type: 'spring', duration: 1.5, bounce: 0 },
+          opacity: { delay, duration: 0.01 }
         }
-    };
+      }
+    }
+  }
 
-    return (
-        <div className="circle-progress" style={{ width: width, height: height }}>
+  return (
+        <div className="circle-progress" style={{ width, height }}>
             <div className="outer">
                 <div className="inner">
                     {children}
@@ -58,7 +58,7 @@ const CircleProgress: React.FC<CircleProgressProps> = ({ nbMax, nb, color1, colo
                 />
             </svg>
         </div>
-    );
-};
+  )
+}
 
-export default CircleProgress;
+export default CircleProgress

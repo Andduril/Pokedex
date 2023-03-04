@@ -1,19 +1,19 @@
-import { PokemonMove } from "../../../../utils/Pokemon";
-import MoveItem from "../MoveItem/MoveItem";
-import './PokemonMoves.style.scss';
+import { type PokemonMove } from '../../../../utils/Pokemon'
+import MoveItem from '../MoveItem/MoveItem'
+import './PokemonMoves.style.scss'
 
 export interface PokemonMovesProps {
-    moves: PokemonMove[];
+  moves: PokemonMove[]
 }
 
 const PokemonMoves: React.FC<PokemonMovesProps> = ({ moves }) => {
-    return (
+  return (
         <ul id="PokemonMoves">
             {moves.map((value, index) => (
                 <MoveItem key={index} url={value.move.url} />
             ))}
         </ul>
-    );
-};
+  )
+}
 
-export default PokemonMoves;
+export default PokemonMoves

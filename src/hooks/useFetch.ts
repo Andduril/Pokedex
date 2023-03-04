@@ -5,20 +5,20 @@ interface State<T> {
   error?: Error
 }
 
-type Cache<T> = { [url: string]: T }
+type Cache<T> = Record<string, T>
 
 type Action<T> =
   | { type: 'loading' }
-  | { type: 'fetched'; payload: T }
-  | { type: 'error'; payload: Error }
+  | { type: 'fetched', payload: T }
+  | { type: 'error', payload: Error }
 
-function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
+function useFetch<T = unknown> (url?: string, options?: RequestInit): State<T> {
   const cache = useRef<Cache<T>>({})
   const cancelRequest = useRef<boolean>(false)
 
   const initialState: State<T> = {
     error: undefined,
-    data: undefined,
+    data: undefined
   }
 
   const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
@@ -50,7 +50,7 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
       }
 
       try {
-        const response = await fetch(url, options);
+        const response = await fetch(url, options)
 
         if (!response.ok) {
           throw new Error(response.statusText)
@@ -69,11 +69,10 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
     }
 
     void fetchData()
-    
+
     return () => {
       cancelRequest.current = true
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url])
 
   return state

@@ -1,27 +1,27 @@
-import {  useState } from "react";
-import './Tabs.style.scss';
-import React from "react";
-import TabElement from "./TabElement/TabElement";
+import React, { useState } from 'react'
+import './Tabs.style.scss'
+
+import type TabElement from './TabElement/TabElement'
 
 export interface PokemonTabsProps {
-    children: React.ReactElement<typeof TabElement>[];
+  children: Array<React.ReactElement<typeof TabElement>>
 };
 
-const Tabs: React.FC<PokemonTabsProps> = ({children}) => {
-    const tabs = children;
-    const [activeTab, setActiveTab] = useState<React.ReactElement<typeof TabElement>>(tabs[0]);
+const Tabs: React.FC<PokemonTabsProps> = ({ children }) => {
+  const tabs = children
+  const [activeTab, setActiveTab] = useState<React.ReactElement<typeof TabElement>>(tabs[0])
 
-    const setTab = (newTab: React.ReactElement<typeof TabElement>) => {
-        setActiveTab(newTab);
-    };
+  const setTab = (newTab: React.ReactElement<typeof TabElement>) => {
+    setActiveTab(newTab)
+  }
 
-    return (
+  return (
         <div id="Tabs">
             <ul className="tabs-nav">
                 {tabs.map((element, index) => (
                     <li
                         className={element === activeTab ? 'active' : undefined}
-                        key={index} onClick={() => setTab(element)}
+                        key={index} onClick={() => { setTab(element) }}
                     >
                         {element.props.name}
                     </li>
@@ -31,7 +31,7 @@ const Tabs: React.FC<PokemonTabsProps> = ({children}) => {
                 {activeTab}
             </div>
         </div>
-    );
-};
+  )
+}
 
-export default Tabs;
+export default Tabs

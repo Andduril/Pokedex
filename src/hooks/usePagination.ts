@@ -1,46 +1,45 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react'
 
 export interface usePaginationProps {
-    itemsPerPage: number;
-    totalCount: number;
+  itemsPerPage: number
+  totalCount: number
 };
 
 const getLimit = (itemsPerPage: number, offset: number, totalCount: number): number => {
-    if((offset + itemsPerPage) > totalCount) {
-        return itemsPerPage - ((offset + itemsPerPage) - totalCount);
-    };
+  if ((offset + itemsPerPage) > totalCount) {
+    return itemsPerPage - ((offset + itemsPerPage) - totalCount)
+  };
 
-    return itemsPerPage;
-};
+  return itemsPerPage
+}
 
-const usePagination = ({itemsPerPage, totalCount}: usePaginationProps) => {
-    const [currentPage, setCurrentPage] = useState<number>(1);
-    const offset = (currentPage * itemsPerPage) - itemsPerPage;
+const usePagination = ({ itemsPerPage, totalCount }: usePaginationProps) => {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const offset = (currentPage * itemsPerPage) - itemsPerPage
 
-    const limit = getLimit(itemsPerPage, offset, totalCount);
-    
-    const totalPages = useMemo(() => {
-        return Math.ceil(totalCount / itemsPerPage);
-    }, [itemsPerPage, totalCount]);
+  const limit = getLimit(itemsPerPage, offset, totalCount)
 
-    const setPage = (newPage: number) => {
-        setCurrentPage(newPage);
-    };
+  const totalPages = useMemo(() => {
+    return Math.ceil(totalCount / itemsPerPage)
+  }, [itemsPerPage, totalCount])
 
-    const hasPrevious = (): boolean => {
-        if (currentPage === 1) return false;
+  const setPage = (newPage: number) => {
+    setCurrentPage(newPage)
+  }
 
-        return true;
-    };
+  const hasPrevious = (): boolean => {
+    if (currentPage === 1) return false
 
-    const hasNext = (): boolean => {
-        if (currentPage === totalPages) return false;
+    return true
+  }
 
-        return true;
-    };
+  const hasNext = (): boolean => {
+    if (currentPage === totalPages) return false
 
-    return { currentPage, setPage, hasPrevious, hasNext, totalPages, offset, limit};
+    return true
+  }
 
-};
+  return { currentPage, setPage, hasPrevious, hasNext, totalPages, offset, limit }
+}
 
-export default usePagination;
+export default usePagination
