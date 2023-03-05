@@ -1,9 +1,5 @@
 # Pokedex
 
-<p>
-    
-</p>
-
 ## Table Of Content
 
 - [Presentation](#Presentation)
