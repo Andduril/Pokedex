@@ -3,13 +3,13 @@ import useFetch from '../../hooks/useFetch'
 import { type Pokemon } from '../../utils/Pokemon'
 import { api } from '../../utils/Api'
 import './PokemonPage.style.scss'
-import { AnimatePresence, motion } from 'framer-motion'
+// import { AnimatePresence, motion } from 'framer-motion'
 import PokemonSprite from '../../components/PagesParts/PokemonPageParts/PokemonSprite/PokemonSprite'
-import PokemonMoves from '../../components/PagesParts/PokemonPageParts/PokemonMoves/PokemonMoves'
+// import PokemonMoves from '../../components/PagesParts/PokemonPageParts/PokemonMoves/PokemonMoves'
 import PokemonStats from '../../components/PagesParts/PokemonPageParts/PokemonStats/PokemonStats'
 import PokemonTypes from '../../components/PagesParts/PokemonPageParts/PokemonTypes/PokemonTypes'
-import Tabs from '../../components/utils/Tabs/Tabs'
-import TabElement from '../../components/utils/Tabs/TabElement/TabElement'
+// import Tabs from '../../components/utils/Tabs/Tabs'
+// import TabElement from '../../components/utils/Tabs/TabElement/TabElement'
 
 const PokemonPage = () => {
   const { pokemonId } = useParams()
@@ -36,7 +36,8 @@ const PokemonPage = () => {
                     <div style={{ width: '50%' }}>
                         <PokemonTypes types={data.types}/>
                     </div>
-                    <Tabs>
+                    <PokemonStats stats={data.stats}/>
+                    {/* <Tabs>
                         <TabElement name="stats">
                             <AnimatePresence mode="wait">
                                 <motion.div className="stats-tab"
@@ -61,7 +62,7 @@ const PokemonPage = () => {
                                 </motion.div>
                             </AnimatePresence>
                         </TabElement>
-                    </Tabs>
+                    </Tabs> */}
                 </div>
                 )
               : (
