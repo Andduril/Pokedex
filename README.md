@@ -22,6 +22,16 @@ Pokedex is a small front-end project made in React (Typescript).
 
 The project use the [PokeAPI](https://pokeapi.co/).
 
+![pokedex_screenshot1](https://user-images.githubusercontent.com/73158252/222937526-fb2c6040-4bb9-40c0-a887-a211b2cab392.PNG)
+
+###
+
+| Responsive | Progress |
+| ---------- | :------: |
+| mobile     |   80%    |
+| tablet     |    0%    |
+| desktop    |    0%    |
+
 ## Installation
 
 clone this repo and in the root folder run :
