@@ -39,20 +39,20 @@ const SideMenu: React.FC<SideMenuProps> = ({ children }) => {
   }, [])
 
   return (
-        <motion.nav
-            initial={false}
-            animate={isOpen ? 'open' : 'closed'}
-            style={{ pointerEvents: isOpen ? 'all' : 'none' }}
-            custom={height}
-            ref={containerRef}
-            className='side-menu'
-        >
-            <motion.div className='background' variants={sidebar}>
-                {children}
-            </motion.div>
+    <motion.nav
+      initial={false}
+      animate={isOpen ? 'open' : 'closed'}
+      style={{ pointerEvents: isOpen ? 'all' : 'none' }}
+      custom={height}
+      ref={containerRef}
+      className='side-menu'
+    >
+      <motion.div className='background' variants={sidebar}>
+        {children}
+      </motion.div>
 
-            <MenuToggleIcon toggle={() => { toggleOpen() }}/>
-        </motion.nav>
+      <MenuToggleIcon toggle={() => { toggleOpen() }} />
+    </motion.nav>
   )
 }
 

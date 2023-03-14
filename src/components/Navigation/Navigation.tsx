@@ -1,14 +1,8 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import './Navigation.style.scss'
-import PokeBallIcon from '../utils/SVG/PokeBallIcon'
+import NavigationItem, { type NavigationItemProps } from './NavigationItem/NavigationItem'
 
-interface NavigationItemProps {
-  name: string
-  link: string
-};
-
-const MenuItemVariants = {
+export const MenuItemVariants = {
   open: {
     y: 0,
     opacity: 1,
@@ -45,33 +39,15 @@ const items: NavigationItemProps[] = [
   }
 ]
 
-const NavigationItem: React.FC<NavigationItemProps> = ({ name, link }) => {
-  return (
-        <motion.li
-            variants={MenuItemVariants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className='navigation-item'
-        >
-            <Link to={link}>
-                <div className='icon'>
-                    <PokeBallIcon/>
-                </div>
-                <div>
-                    {name}
-                </div>
-            </Link>
-        </motion.li>
-  )
-}
-
 const Navigation = () => {
   return (
-        <motion.ul variants={NavigationVariants} className='navigation'>
-            {items.map((item, index) => (
-                <NavigationItem name={item.name} key={index} link={item.link} />
-            ))}
-        </motion.ul>
+    <>
+      <motion.ul variants={NavigationVariants} className='navigation'>
+        {items.map((item, index) => (
+          <NavigationItem name={item.name} key={index} link={item.link} />
+        ))}
+      </motion.ul>
+    </>
   )
 }
 

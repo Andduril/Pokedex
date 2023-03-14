@@ -1,0 +1,52 @@
+@use '../abstracts/variables' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #403f40;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9c9c9c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #acacac;
+}
+
+.light {
+  .bg-1 {
+    background-color: $dark-000;
+  }
+
+  .text {
+    color: black;
+  }
+}
+
+.dark {
+  .bg-1 {
+    background-color: $dark-700;
+  }
+
+  .text {
+    color: white;
+  }
+}

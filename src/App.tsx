@@ -2,9 +2,9 @@ import React, { Suspense } from 'react'
 import Navigation from './components/Navigation/Navigation'
 import SideMenu from './components/Navigation/SideMenu/SideMenu'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import './App.scss'
 import Loading from './pages/LoadingPage/LoadinPage'
 import { AnimatePresence, motion } from 'framer-motion'
+import './App.scss'
 
 const HomePage = React.lazy(async () => await import('./pages/HomePage/HomePage'))
 const PokemonsPage = React.lazy(async () => await import('./pages/PokemonsPage/PokemonsPage'))
